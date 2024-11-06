@@ -4,8 +4,7 @@ async function generateFortune() {
     document.getElementById("fortune").textContent = '';
 
     try {
-        // Replace `/api/generate-fortune` with the path to your Vercel serverless function
-        const response = await fetch('/api/generate-fortune', {
+        const response = await fetch('api/generate-fortune.js', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
         });
