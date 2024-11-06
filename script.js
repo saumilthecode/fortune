@@ -7,7 +7,7 @@ document.getElementById("get-fortune").addEventListener("click", async function 
       asciiArt.textContent = "";
 
       // Fetching fortune and ASCII art
-      const response = await fetch("/api/fortune");
+      const response = await fetch("api/fortune");
       const data = await response.json();
 
       if (response.ok) {
