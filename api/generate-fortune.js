@@ -5,7 +5,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
-        res.status(405).send('Method Not Allowed');
+        res.status(405).json({ error: 'Method Not Allowed' });
         return;
     }
 
@@ -16,6 +16,7 @@ export default async function handler(req, res) {
         res.status(200).json({ response: result.response.text() });
     } catch (error) {
         console.error("Error generating content:", error);
-        res.status(500).send("Error generating content.");
+        // Respond with JSON containing the error message
+        res.status(500).json({ error: "Error generating content." });
     }
 }
