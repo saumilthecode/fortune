@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fortune Cookie</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Generative AI Prompt</title>
 </head>
 <body>
-  <div class="container">
-    <h1>Your Fortune Cookie</h1>
-    <div id="fortune-container">
-      <pre id="ascii-art">Loading...</pre>
-      <p id="fortune-text">Please click to get a fortune!</p>
-      <button id="get-fortune">Get Your Fortune</button>
-    </div>
-  </div>
-  <script src="script.js"></script>
+  <div id="result"></div>
+
+  <script type="module">
+    async function fetchGenerativeResponse() {
+      const prompt = "Write a story about a magic backpack.";
+      const response = await fetch("/api/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt })
+      });
+      const data = await response.json();
+      document.getElementById("result").innerText = data.text || data.error;
+    }
+
+    fetchGenerativeResponse();
+  </script>
 </body>
 </html>
