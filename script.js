@@ -42,7 +42,7 @@ async function fetchFortune() {
             throw new Error('API not initialized');
         }
 
-        const prompt = "Give me a playful and uplifting fortune.";
+        const prompt = "Give me a fortune fit for a cookie.";
         const result = await model.generateContent(prompt);
         const fortune = result.response.text();
         fortuneDisplay.innerText = fortune;
